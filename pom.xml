@@ -79,5 +79,17 @@
             <artifactId>jboss-transaction-api_1.2_spec</artifactId>
             <version>1.1.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2</version>
+        </dependency>
+
     </dependencies>
+    <repositories>
+        <repository>
+            <id>handchina-rbc-repository</id>
+            <url>http://nexus.saas.hand-china.com/content/repositories/rdc/</url>
+        </repository>
+    </repositories>
 </project>
