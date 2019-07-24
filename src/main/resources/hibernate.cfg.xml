@@ -9,9 +9,14 @@
         <!-- The JDBC driver class -->
         <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
         <!-- The JDBC URL to the database instance -->
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.2.3:1521:databaseName</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.2.3:1521:dsndev</property>
         <property name="hibernate.connection.username">TBX</property>
         <property name="hibernate.connection.password">TBX</property>
+
+        <!-- These configs enable see hibernate query generation -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="use_sql_comments">true</property>
 
     </session-factory>
 </hibernate-configuration>
