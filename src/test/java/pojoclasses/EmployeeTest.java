@@ -41,15 +41,19 @@ public class EmployeeTest extends TestCase
             Address address = new Address( "firstLane", "secondLne", "Sri lanka" );
             employee.setAddress( address );
             /*
-            *Main difference between save and saveOrUpdate method is that save() generates a new identifier and INSERT record into database while saveOrUpdate can either INSERT or UPDATE based upon existence of record.
-            * Clearly saveOrUpdate is more flexible in terms of use but it involves an extra processing to find out whether record already exists in table or not.
-            * in summery  save() method saves records into database by INSERT SQL query, Generates a new identifier and return the Serializable identifier back.
-            *On the on other hand  saveOrUpdate() method either INSERT or UPDATE based upon existence of object in database. If persistence object already exists in database
-            * then UPDATE SQL will execute and if there is no corresponding object in database than INSERT will run
+            *First difference between save and persist is there return type.
+            * Similar to save method persist also INSERT records into database but return type of persist is void while return type of save is Serializable object.
+            *
+            * persist() method doesn't guarantee that the identifier value will be assigned to the persistent instance immediately, the assignment might happen at flush time
+            *
+            * persist() method guarantees that it will not execute an INSERT statement if it is called outside of transaction boundaries.
+            * save() method does not guarantee the same, it returns an identifier, and if an INSERT has to be executed to get the identifier (e.g. "identity" generator),
+            * this INSERT happens immediately, no matter if you are inside or outside of a transaction.
+            *
             * */
             int empId = (int) session.save( employee );
-            session.saveOrUpdate( employee ); //returns void
-
+            session.persist( employee ); //returns void
+            session.flush();
             transaction.commit();
 
             /*Update operation*/
