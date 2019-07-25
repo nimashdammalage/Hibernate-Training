@@ -31,7 +31,7 @@ public class Employee
 
     //Links for cascade types and session operations: https://www.baeldung.com/jpa-cascade-types
     //https://thoughts-on-java.org/best-practices-many-one-one-many-associations-mappings/
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private Address address;
 
     public Employee()
