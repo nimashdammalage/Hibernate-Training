@@ -29,6 +29,7 @@ public class Employee
     @Column(name = "salary", nullable = true)
     private int salary;
 
+    //Links for cascade types and session operations: https://www.baeldung.com/jpa-cascade-types
     @OneToOne(mappedBy = "employee", cascade = CascadeType.PERSIST)
     private Address address;
 

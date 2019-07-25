@@ -40,7 +40,7 @@ public class EmployeeTest extends TestCase
             Employee employee = new Employee( "hemal", "nilanga", 4500 );
             Address address = new Address( "firstLane", "secondLne", "Sri lanka" );
             employee.setAddress( address );
-            session.persist( employee ); //returns void
+            session.save( employee ); //returns void
             session.flush();
             transaction.commit();
 
