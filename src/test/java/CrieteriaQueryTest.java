@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.BeforeClass;
@@ -74,7 +73,7 @@ public class CrieteriaQueryTest extends TestCase
             System.out.println( session.createQuery( secondCriteriaQuery ).getSingleResult());
 
             // Case sensitive form of the above restriction.
-            secondCriteriaQuery.select( secondRoot ).where( session.getCriteriaBuilder()( secondRoot.get( "firstName" ).as(String.class), "%mod%" ) );
+            secondCriteriaQuery.select( secondRoot ).where( session.getCriteriaBuilder().like( secondRoot.get( "firstName" ).as(String.class), "%mod%" ) );
             System.out.println( session.createQuery( secondCriteriaQuery ).getSingleResult());
 
 //            // Case sensitive form of the above restriction.
