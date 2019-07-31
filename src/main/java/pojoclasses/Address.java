@@ -29,7 +29,7 @@ public class Address
     @Column
     private String area;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)//mappedBy tells inverse connection
     private Employee employee;
 
     public Address()

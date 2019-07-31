@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,7 +32,8 @@ public class Employee
 
     //Links for cascade types and session operations: https://www.baeldung.com/jpa-cascade-types
     //https://thoughts-on-java.org/best-practices-many-one-one-many-associations-mappings/
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(unique = true) //tells which table have joining column and governs the relationship
     private Address address;
 
     public Employee()

@@ -37,8 +37,8 @@ public class EmployeeTest extends TestCase
         {
             /*Insert operation*/
             Transaction transaction = session.beginTransaction();
-            Employee employee = new Employee( "hemal", "nilanga", 4500 );
-            Address address = new Address( "firstLane", "secondLne", "Sri lanka" );
+            Employee employee = new Employee( "Kamal", "Gunarathne", 22 );
+            Address address = new Address( "F6", "NormalStrees", "Mahaoya" );
             employee.setAddress( address );
             session.save( employee ); //returns void
             session.flush();
