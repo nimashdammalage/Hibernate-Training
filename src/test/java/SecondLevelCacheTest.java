@@ -1,4 +1,5 @@
 import junit.framework.TestCase;
+import net.sf.ehcache.CacheManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -39,11 +40,15 @@ public class SecondLevelCacheTest extends TestCase
             session.beginTransaction();
             Player player = new Player( "playerKasun", 45, SkillLevel.GOOD );
             session.save( player );
+
+            session.load( Player.class, new Integer( 1 ) );
             session.getTransaction().commit();
 
             session.beginTransaction();
-            Player loadedPlayer = session.load( Player.class, new Integer( 1 ) );
-            System.out.println( loadedPlayer.toString() );
+            int cacheSize = CacheManager.ALL_CACHE_MANAGERS.get( 0 ).getCache( "pojoclasses.Player" ).getSize();
+            System.out.println( "Seconf cache size: " + cacheSize );
+            session.getTransaction().commit();
+
 
         }
     }

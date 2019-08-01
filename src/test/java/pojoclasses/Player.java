@@ -1,5 +1,9 @@
 package pojoclasses;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
+@Cacheable
+@Cache( usage = CacheConcurrencyStrategy.READ_WRITE)  //https://stackoverflow.com/questions/1837651/hibernate-cache-strategy
 @Table(name = "NIMASH_TEST_PLAYER")
 public class Player
 {
